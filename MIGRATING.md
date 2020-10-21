@@ -26,6 +26,32 @@ The existing `.widgetrc` file used to configure the Widget has been **removed**.
 - }
 ```
 
+## Migrating from 4.x to 5.x
+
+## authClient has been removed
+
+The internal instance of [@okta/okta-auth-js](https://github.com/okta/okta-auth-js) is no longer being exposed. If you need to work with the `okta-auth-js` library, you should add a dependency to [@okta/okta-auth-js](https://github.com/okta/okta-auth-js) and create an instance in your application.
+
+## hasTokensInUrl has been removed
+
+The widget no longer contains any logic to handle a redirect callback. If your app needs to handle a redirect callback, we recommend using [@okta/okta-auth-js](https://github.com/okta/okta-auth-js) or one of our other client SDKs:
+
+- [React](https://github.com/okta/okta-react)
+- [Angular](https://github.com/okta/okta-angular)
+- [Vue](https://github.com/okta/okta-vue)
+
+## `scope` option has been removed
+
+This option has been deprecated with a warning since version 3 and has now been removed. You should use `scopes` (array) instead.
+
+### showSignInToGetTokens no longer redirects
+
+`showSignInToGetTokens` now returns a Promise that resolves to an object containing tokens. This avoids a round-trip redirect to Okta and provides a faster, simpler, and more seamless experience for both developers and end-users. A `redirectUri` must still be configured, but it is no longer necessary to provide any callback logic when using this method. If your application requires a redirect for some reason, such as server-side processing of an authorization code, you should use [showSignInAndRedirect](https://github.com/okta/okta-signin-widget#showsigninandredirect) instead.
+
+### renderEl now returns a Promise
+
+The `success` and `error` callbacks are still supported, but you may prefer to use the Promise syntax.
+
 ## Migrating from 3.x to 4.x
 
 ### HTTPS is enforced by default

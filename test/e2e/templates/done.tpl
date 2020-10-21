@@ -5,12 +5,7 @@
 // PKCE cannot be enabled because the test app is a "web" type. OKTA-246000 
 var pkce = false;
 
-function addMessageToPage(id, msg) {
-  var appNode = document.createElement('div');
-  appNode.setAttribute('id', id);
-  appNode.innerHTML = msg;
-  document.body.appendChild(appNode);
-}
+{{> sharedFunctions }}
 
 // auto-detect responseMode (when responseType is code)
 var responseMode;
@@ -35,10 +30,7 @@ if (oktaSignIn.hasTokensInUrl()) {
   addMessageToPage('location_search', window.location.search);
   oktaSignIn.authClient.token.parseFromUrl()
     .then(function (res) {
-      var idToken = res.tokens.idToken;
-      if (idToken) {
-        addMessageToPage('idtoken_user', idToken.claims.name);
-      }
+      addTokensToPage(res.tokens);
     })
     .catch(function (err) {
       addMessageToPage('oidc_error', JSON.stringify(err));

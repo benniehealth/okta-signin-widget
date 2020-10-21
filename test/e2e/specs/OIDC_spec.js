@@ -51,7 +51,7 @@ describe('OIDC flows', function () {
         authParams: {
           pkce: false,
           responseType: 'id_token',
-          scope: ['openid', 'email', 'profile', 'address', 'phone']
+          scopes: ['openid', 'email', 'profile', 'address', 'phone']
         },
         idps: [
           {
@@ -88,7 +88,7 @@ describe('OIDC flows', function () {
         authParams: {
           pkce: false,
           responseType: ['id_token', 'token'],
-          scope: ['openid', 'email', 'profile', 'address', 'phone']
+          scopes: ['openid', 'email', 'profile', 'address', 'phone']
         },
         idps: [
           {
