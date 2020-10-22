@@ -15,44 +15,52 @@ You can learn more on the [Okta + JavaScript][lang-landing] page in our document
 
 <!-- TOC depthFrom:2 depthTo:3 -->
 
-- [Getting started](#getting-started)
-  - [Using the Okta CDN](#using-the-okta-cdn)
-  - [Using the npm module](#using-the-npm-module)
-- [Usage guide](#usage-guide)
-- [API Reference](#api-reference)
-  - [OktaSignIn](#oktasignin)
-  - [renderEl](#renderel)
-  - [showSignInToGetTokens](#showsignintogettokens)
-  - [hide](#hide)
-  - [show](#show)
-  - [remove](#remove)
-  - [on](#on)
-  - [off](#off)
-  - [authClient](#authclient)
-  - [hasTokensInUrl](#hastokensinurl)
-- [Configuration](#configuration)
-  - [Basic config options](#basic-config-options)
-  - [Username and password](#username-and-password)
-  - [Language and text](#language-and-text)
-  - [Colors](#colors)
-  - [Links](#links)
-  - [Buttons](#buttons)
-  - [Registration](#registration)
-  - [IdP Discovery](#idp-discovery)
-  - [OpenID Connect](#openid-connect)
-  - [Smart Card IdP](#smart-card-idp)
-  - [Bootstrapping from a recovery token](#bootstrapping-from-a-recovery-token)
-  - [Feature flags](#feature-flags)
-- [Events](#events)
-  - [ready](#ready)
-  - [afterError](#aftererror)
-  - [afterRender](#afterrender)
-  - [pageRendered](#pagerendered)
-- [Building the Widget](#building-the-widget)
-  - [The `.widgetrc.js` config file](#the-widgetrc-config-file)
-  - [Build and test commands](#build-and-test-commands)
-- [Browser support](#browser-support)
-- [Contributing](#contributing)
+- [Okta Sign-In Widget](#okta-sign-in-widget)
+  - [Getting started](#getting-started)
+    - [Using the Okta CDN](#using-the-okta-cdn)
+    - [Using the npm module](#using-the-npm-module)
+  - [Usage guide](#usage-guide)
+  - [Usage examples](#usage-examples)
+    - [OIDC login flow using PKCE (Proof Key for Code Exchange)](#oidc-login-flow-using-pkce-proof-key-for-code-exchange)
+    - [OIDC login flow using Authorization Code](#oidc-login-flow-using-authorization-code)
+  - [API Reference](#api-reference)
+    - [OktaSignIn](#oktasignin)
+    - [renderEl](#renderel)
+    - [showSignInToGetTokens](#showsignintogettokens)
+    - [hide](#hide)
+    - [show](#show)
+    - [remove](#remove)
+    - [on](#on)
+    - [off](#off)
+    - [authClient](#authclient)
+    - [hasTokensInUrl](#hastokensinurl)
+  - [Configuration](#configuration)
+    - [Basic config options](#basic-config-options)
+    - [Username and password](#username-and-password)
+    - [Language and text](#language-and-text)
+    - [Colors](#colors)
+    - [Links](#links)
+      - [Help Links](#help-links)
+      - [Sign Out Link](#sign-out-link)
+    - [Buttons](#buttons)
+      - [Custom Buttons](#custom-buttons)
+      - [Registration Button](#registration-button)
+    - [Registration](#registration)
+    - [IdP Discovery](#idp-discovery)
+      - [Additional configuration](#additional-configuration)
+    - [OpenID Connect](#openid-connect)
+    - [Smart Card IdP](#smart-card-idp)
+    - [Bootstrapping from a recovery token](#bootstrapping-from-a-recovery-token)
+    - [Feature flags](#feature-flags)
+  - [Events](#events)
+    - [ready](#ready)
+    - [afterError](#aftererror)
+    - [afterRender](#afterrender)
+    - [pageRendered](#pagerendered)
+  - [Building the Widget](#building-the-widget)
+    - [Build and test commands](#build-and-test-commands)
+  - [Browser support](#browser-support)
+  - [Contributing](#contributing)
 
 <!-- /TOC -->
 
@@ -273,6 +281,43 @@ signIn.renderEl(
     // 1. The type of authentication flow that has just completed, determined by res.status
     // 2. What type of token the widget is returning
 
+      /*
+        res.status can be:
+        * SUCCESS
+        ** {successResponse} -- definition depends:
+        if type is SESSION_STEP_UP:
+        {
+          user,
+          type,
+          url,
+          finish: () => {}
+        }
+        else if there is a url in resp,
+        {
+          user,
+          type,
+          next: () => {}
+        }
+        else it's a SESSION_SSO:
+        {
+          user,
+          type,
+          session: {
+            token,
+            setCookieAndRedirect: () => {}
+          }
+        }
+        }
+        * FORGOT_PASSWORD_EMAIL_SENT
+        ** username
+        * UNLOCK_ACCOUNT_EMAIL_SENT
+        ** username
+        * ACTIVATION_EMAIL_SENT
+        ** username
+        * REGISTRATION_COMPLETE
+        ** activationToken
+        * 
+      */
     // The user has started the password recovery flow, and is on the confirmation
     // screen letting them know that an email is on the way.
     if (res.status === 'FORGOT_PASSWORD_EMAIL_SENT') {
@@ -292,6 +337,11 @@ signIn.renderEl(
 
       // Handle success when the widget is not configured for OIDC
 
+      /*
+        res.type can be:
+        * SESSION_STEP_UP
+        * SESSION_SSO
+      */
       if (res.type === 'SESSION_STEP_UP') {
         // Session step up response
         // If the widget is not configured for OIDC and the authentication type is SESSION_STEP_UP,
