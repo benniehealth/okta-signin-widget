@@ -1,0 +1,29 @@
+.device-enrollment {
+  ol {
+    counter-reset: decimal;
+  }
+  li {
+    margin: 24px 0;
+    padding-left: 24px;
+    &::before {
+      content: counter(decimal) ". ";
+      counter-increment: decimal;
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      height: 100%;
+      width: 20px;;
+    }
+  }
+  .button {
+    margin-top: 8px;
+  }
+  .explanation {
+    margin: 24px 0;
+  }
+  .store-image {
+    display: block;
+    margin: auto;
+    height: 40px;
+  }
+}
