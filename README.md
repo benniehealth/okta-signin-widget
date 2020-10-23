@@ -271,6 +271,8 @@ Renders the widget to the DOM, and passes control back to your app through succe
 - `success` *(optional)* - Function that is called when the user has completed an authentication flow. If an [OpenID Connect redirect flow](#openid-connect) is used, this function can be omitted.
 - `error` *(optional)* - Function that is called when the widget has been initialized with invalid config options, or has entered a state it cannot recover from. If omitted, a default function is used to output errors to the console.
 
+**Non-OIDC Configuration:**
+
 ```javascript
 signIn.renderEl(
   // Assumes there is an empty element on the page with an id of 'osw-container'
@@ -322,8 +324,6 @@ signIn.renderEl(
     // The user has successfully completed the authentication flow
     if (res.status === 'SUCCESS') {
 
-      // Handle success when the widget is not configured for OIDC
-
       if (res.type === 'SESSION_STEP_UP') {
         // Session step up response
         // If the widget is not configured for OIDC and the authentication type is SESSION_STEP_UP,
@@ -368,22 +368,6 @@ signIn.renderEl(
         return;
       }
 
-
-      // OIDC response
-
-      // If the widget is configured for OIDC with a single responseType, the
-      // response will be the token.
-      // i.e. authParams.responseType = 'id_token':
-      console.log(res.claims);
-      signIn.tokenManager.add('my_id_token', res);
-
-      // If the widget is configured for OIDC with multiple responseTypes, the
-      // response will be an array of tokens:
-      // i.e. authParams.responseType = ['id_token', 'token']
-      signIn.tokenManager.add('my_id_token', res[0]);
-      signIn.tokenManager.add('my_access_token', res[1]);
-
-      return;
     }
 
   },
@@ -391,6 +375,46 @@ signIn.renderEl(
   function error(err) {
     // This function is invoked with errors the widget cannot recover from:
     // Known errors: CONFIG_ERROR, UNSUPPORTED_BROWSER_ERROR
+  }
+);
+```
+
+**OIDC Configuration:**
+
+```javascript
+signIn.renderEl(
+  // Assumes there is an empty element on the page with an id of 'osw-container'
+  {el: '#osw-container'},
+
+  function success(res) {
+    // Handling of other statuses in `res.status` is the same as the non-OIDC configuration
+
+    // The user has successfully completed the authentication flow
+    if (res.status === 'SUCCESS') {
+
+      // If the widget is configured for OIDC with a single responseType, the
+      // response will be the token.
+      // i.e. authParams.responseType = 'id_token':
+      console.log(res.claims);
+
+      // Example handling of single responseType:
+      signIn.tokenManager.add('my_id_token', res);
+
+      // If the widget is configured for OIDC with multiple responseTypes, the
+      // response will be an array of tokens:
+      // i.e. authParams.responseType = ['id_token', 'token']
+
+      // Example handling of multiple responseTypes instead:
+      // signIn.tokenManager.add('my_id_token', res[0]);
+      // signIn.tokenManager.add('my_access_token', res[1]);
+
+      return;
+    }
+
+  },
+
+  function error(err) {
+    // Same as non-OIDC error handling function
   }
 );
 ```
