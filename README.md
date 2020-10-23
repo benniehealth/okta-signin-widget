@@ -341,7 +341,9 @@ signIn.renderEl(
         console.log('Target resource url: ' + res.stepUp.url);
         res.stepUp.finish();
         return;
-      } else if (res.next) {
+      }
+
+      if (res.next) {
         // If the response contains a redirect URL, the response object will contain a
         // function that redirects the user when called.
         // Properties available on `res`:
@@ -352,22 +354,22 @@ signIn.renderEl(
         console.log(res.user);
         res.next();
         return;
-      } else {
-        // If the widget is not configured for OIDC, the default authentication
-        // type of SESSION_SSO is implied. The response will contain user
-        // metadata and a sessionToken that can be converted to an Okta
-        // session cookie:
-        // Properties available on `res`:
-        // - status (string)
-        // - user (object)
-        // - type (string)
-        // - session (object)
-        //   - token (string)
-        //   - setCookieAndRedirect (function)
-        console.log(res.user);
-        res.session.setCookieAndRedirect('https://acme.com/app');
-        return;
       }
+
+      // If the widget is not configured for OIDC, the default authentication
+      // type of SESSION_SSO is implied. The response will contain user
+      // metadata and a sessionToken that can be converted to an Okta
+      // session cookie:
+      // Properties available on `res`:
+      // - status (string)
+      // - user (object)
+      // - type (string)
+      // - session (object)
+      //   - token (string)
+      //   - setCookieAndRedirect (function)
+      console.log(res.user);
+      res.session.setCookieAndRedirect('https://acme.com/app');
+      return;
 
     }
 
