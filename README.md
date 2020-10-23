@@ -399,18 +399,17 @@ signIn.renderEl(
       // If the widget is configured for OIDC with a single responseType, the
       // response will be the token.
       // i.e. authParams.responseType = 'id_token':
-      console.log(res.claims);
 
       // Example handling of single responseType:
-      signIn.tokenManager.add('my_id_token', res);
+      // myTokenManager.add('my_id_token', res);
 
       // If the widget is configured for OIDC with multiple responseTypes, the
       // response will be an array of tokens:
       // i.e. authParams.responseType = ['id_token', 'token']
 
       // Example handling of multiple responseTypes instead:
-      // signIn.tokenManager.add('my_id_token', res[0]);
-      // signIn.tokenManager.add('my_access_token', res[1]);
+      // myTokenManager.add('my_id_token', res[0]);
+      // myTokenManager.add('my_access_token', res[1]);
 
       return;
     }
