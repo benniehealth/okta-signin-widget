@@ -281,47 +281,13 @@ signIn.renderEl(
     // 1. The type of authentication flow that has just completed, determined by res.status
     // 2. What type of token the widget is returning
 
-      /*
-        res.status can be:
-        * SUCCESS
-        ** {successResponse} -- definition depends:
-        if type is SESSION_STEP_UP:
-        {
-          user,
-          type,
-          url,
-          finish: () => {}
-        }
-        else if there is a url in resp,
-        {
-          user,
-          type,
-          next: () => {}
-        }
-        else it's a SESSION_SSO:
-        {
-          user,
-          type,
-          session: {
-            token,
-            setCookieAndRedirect: () => {}
-          }
-        }
-        }
-        * FORGOT_PASSWORD_EMAIL_SENT
-        ** username
-        * UNLOCK_ACCOUNT_EMAIL_SENT
-        ** username
-        * ACTIVATION_EMAIL_SENT
-        ** username
-        * REGISTRATION_COMPLETE
-        ** activationToken
-        * 
-      */
     // The user has started the password recovery flow, and is on the confirmation
     // screen letting them know that an email is on the way.
     if (res.status === 'FORGOT_PASSWORD_EMAIL_SENT') {
       // Any followup action you want to take
+      // Properties available on `res`:
+      // - status
+      // - username
       return;
     }
 
@@ -329,6 +295,27 @@ signIn.renderEl(
     // screen letting them know that an email is on the way.
     if (res.status === 'UNLOCK_ACCOUNT_EMAIL_SENT') {
       // Any followup action you want to take
+      // Properties available on `res`:
+      // - status
+      // - username
+      return;
+    }
+
+    // TODO: document this
+    if (res.status === 'ACTIVATION_EMAIL_SENT') {
+      // Any followup action you want to take
+      // Properties available on `res`:
+      // - status
+      // - username
+      return;
+    }
+
+    // TODO: document this
+    if (res.status === 'REGISTRATION_COMPLETE') {
+      // Any followup action you want to take
+      // Properties available on `res`:
+      // - status
+      // - activationToken
       return;
     }
 
@@ -337,24 +324,45 @@ signIn.renderEl(
 
       // Handle success when the widget is not configured for OIDC
 
-      /*
-        res.type can be:
-        * SESSION_STEP_UP
-        * SESSION_SSO
-      */
       if (res.type === 'SESSION_STEP_UP') {
         // Session step up response
         // If the widget is not configured for OIDC and the authentication type is SESSION_STEP_UP,
         // the response will contain user metadata and a stepUp object with the url of the resource
         // and a 'finish' function to navigate to that url
+        // Properties available on `res`:
+        // - status (string)
+        // - user (string)
+        // - type (string)
+        // - stepUp (object)
+        //   - url (string)
+        //   - finish (function)
         console.log(res.user);
         console.log('Target resource url: ' + res.stepUp.url);
         res.stepUp.finish();
         return;
+      } else if (res.next) {
+        // If the response contains a redirect URL, the response will contain a
+        // function that redirects the user when called.
+        // Properties available on `res`:
+        // - status (string)
+        // - user (string)
+        // - type (string)
+        // - next (function)
+        console.log(res.user);
+        res.next();
+        return;
       } else {
-        // If the widget is not configured for OIDC, the response will contain
-        // user metadata and a sessionToken that can be converted to an Okta
+        // If the widget is not configured for OIDC, the default authentication
+        // type of SESSION_SSO is implied. The response will contain user
+        // metadata and a sessionToken that can be converted to an Okta
         // session cookie:
+        // Properties available on `res`:
+        // - status (string)
+        // - user (string)
+        // - type (string)
+        // - session (object)
+        //   - token (string)
+        //   - setCookieAndRedirect (function)
         console.log(res.user);
         res.session.setCookieAndRedirect('https://acme.com/app');
         return;
