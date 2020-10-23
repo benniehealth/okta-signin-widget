@@ -288,8 +288,8 @@ signIn.renderEl(
     if (res.status === 'FORGOT_PASSWORD_EMAIL_SENT') {
       // Any followup action you want to take
       // Properties available on `res`:
-      // - status
-      // - username
+      // - status (string)
+      // - username (string)
       return;
     }
 
@@ -298,26 +298,27 @@ signIn.renderEl(
     if (res.status === 'UNLOCK_ACCOUNT_EMAIL_SENT') {
       // Any followup action you want to take
       // Properties available on `res`:
-      // - status
-      // - username
+      // - status (string)
+      // - username (string)
       return;
     }
 
-    // TODO: document this
+    // The user has started the activation flow, and is on the confirmation
+    // screen letting them know that an email is on the way.
     if (res.status === 'ACTIVATION_EMAIL_SENT') {
       // Any followup action you want to take
       // Properties available on `res`:
-      // - status
-      // - username
+      // - status (string)
+      // - username (string)
       return;
     }
 
-    // TODO: document this
+    // The user has completed the registration flow
     if (res.status === 'REGISTRATION_COMPLETE') {
       // Any followup action you want to take
       // Properties available on `res`:
-      // - status
-      // - activationToken
+      // - status (string)
+      // - activationToken (string)
       return;
     }
 
@@ -331,7 +332,7 @@ signIn.renderEl(
         // and a 'finish' function to navigate to that url
         // Properties available on `res`:
         // - status (string)
-        // - user (string)
+        // - user (object)
         // - type (string)
         // - stepUp (object)
         //   - url (string)
@@ -341,11 +342,11 @@ signIn.renderEl(
         res.stepUp.finish();
         return;
       } else if (res.next) {
-        // If the response contains a redirect URL, the response will contain a
+        // If the response contains a redirect URL, the response object will contain a
         // function that redirects the user when called.
         // Properties available on `res`:
         // - status (string)
-        // - user (string)
+        // - user (object)
         // - type (string)
         // - next (function)
         console.log(res.user);
@@ -358,7 +359,7 @@ signIn.renderEl(
         // session cookie:
         // Properties available on `res`:
         // - status (string)
-        // - user (string)
+        // - user (object)
         // - type (string)
         // - session (object)
         //   - token (string)
