@@ -1,5 +1,5 @@
 {
-  "name": "@benniehealth/okta-signing-widget",
+  "name": "@benniehealth/okta-signin-widget",
   "description": "The Okta Sign-In Widget",
   "version": "5.4.0",
   "homepage": "https://github.com/okta/okta-signin-widget",
