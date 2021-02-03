@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/benniehealth/okta-signin-widget.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "bugs": {
     "url": "https://github.com/okta/okta-signin-widget/issues"
   },
