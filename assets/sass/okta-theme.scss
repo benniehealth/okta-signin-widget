@@ -25,14 +25,29 @@
 }
 
 @mixin button-shadow($drop-shadow-opacity) {
-  box-shadow: rgba(#000, $drop-shadow-opacity) 0 1px 0, rgba(255, 255, 255, 0.1) 0 1px 0 0 inset;
+  box-shadow: rgba(#000, $drop-shadow-opacity) 0 1px 0,
+    rgba(255, 255, 255, 0.1) 0 1px 0 0 inset;
 }
 
-@mixin button-template($bg-color, $gradient-factor, $text-color, $border-factor, $border-bottom-factor) {
+@mixin button-template(
+  $bg-color,
+  $gradient-factor,
+  $text-color,
+  $border-factor,
+  $border-bottom-factor
+) {
   color: $text-color;
   background-color: $bg-color;
-  background: -o-linear-gradient(top, $bg-color 0%, darken($bg-color, $gradient-factor) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, $bg-color 0%, darken($bg-color, $gradient-factor) 100%); /* IE10+ */
+  background: -o-linear-gradient(
+    top,
+    $bg-color 0%,
+    darken($bg-color, $gradient-factor) 100%
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(
+    top,
+    $bg-color 0%,
+    darken($bg-color, $gradient-factor) 100%
+  ); /* IE10+ */
   background: linear-gradient($bg-color, darken($bg-color, $gradient-factor));
   border-color: darken($bg-color, $border-factor);
   border-bottom-color: darken($bg-color, $border-bottom-factor);
@@ -44,9 +59,20 @@
     /* -- Buttons' Colors -- */
     $hover-bg-color: lighten($bg-color, 3%);
     background-color: $hover-bg-color;
-    background: -o-linear-gradient(top, $hover-bg-color 0%, darken($hover-bg-color, $gradient-factor) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, $hover-bg-color 0%, darken($hover-bg-color, $gradient-factor) 100%); /* IE10+ */
-    background-image: linear-gradient($hover-bg-color, darken($hover-bg-color, $gradient-factor));
+    background: -o-linear-gradient(
+      top,
+      $hover-bg-color 0%,
+      darken($hover-bg-color, $gradient-factor) 100%
+    ); /* Opera 11.10+ */
+    background: -ms-linear-gradient(
+      top,
+      $hover-bg-color 0%,
+      darken($hover-bg-color, $gradient-factor) 100%
+    ); /* IE10+ */
+    background-image: linear-gradient(
+      $hover-bg-color,
+      darken($hover-bg-color, $gradient-factor)
+    );
     border-color: darken($bg-color, $border-factor * 1.3);
     border-bottom-color: darken($bg-color, $border-bottom-factor * 1.2);
     text-decoration: none;
@@ -55,7 +81,7 @@
 }
 
 .skip-to-content-link {
-  font-family: "proxima nova", "montserrat", Arial, Helvetica, sans-serif;
+  font-family: "proxima nova", "ApercuPro", Arial, Helvetica, sans-serif;
   text-decoration: none;
   position: absolute;
   top: 0;
@@ -160,7 +186,6 @@
     }
   }
 
-
   &.main-container {
     /* -- Main Background and Border Colors -- */
     background-color: $primary-bg-color;
@@ -231,13 +256,11 @@
 
   .okta-verify-authenticator {
     /* -- Okta Verify Authenticator (small) -- */
-    background-image: url('../img/icons/mfa/oktaVerify_authenticator.png');
+    background-image: url("../img/icons/mfa/oktaVerify_authenticator.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Okta Verify Authenticator Icons (high DPI) -- */
-      background-image: url('../img/icons/mfa/oktaVerify_authenticator@2x.png');
+      background-image: url("../img/icons/mfa/oktaVerify_authenticator@2x.png");
     }
   }
 
@@ -247,451 +270,378 @@
     border-color: #ccc;
   }
 
-
   .mfa-okta-verify-30,
   .enroll-factor-row .mfa-okta-verify {
     /* -- Factor Icons (small): Okta Verify -- */
-    background-image: url('../img/icons/mfa/oktaVerify_38x38.png');
+    background-image: url("../img/icons/mfa/oktaVerify_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Okta Verify -- */
-      background-image: url('../img/icons/mfa/oktaVerify_ico@2x.png');
+      background-image: url("../img/icons/mfa/oktaVerify_ico@2x.png");
     }
   }
 
   .mfa-okta-verify {
     /* -- Factor Icons (large): Okta Verify -- */
-    background-image: url('../img/icons/mfa/oktaVerify_70x70.png');
+    background-image: url("../img/icons/mfa/oktaVerify_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Okta Verify -- */
-      background-image: url('../img/icons/mfa/oktaVerify@2x.png');
+      background-image: url("../img/icons/mfa/oktaVerify@2x.png");
     }
   }
 
   .mfa-google-auth-30,
   .enroll-factor-row .mfa-google-auth {
     /* -- Factor Icons (small): Google Authenticator -- */
-    background-image: url('../img/icons/mfa/googleAuth_38x38.png');
+    background-image: url("../img/icons/mfa/googleAuth_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Google Authenticator -- */
-      background-image: url('../img/icons/mfa/googleAuth_ico@2x.png');
+      background-image: url("../img/icons/mfa/googleAuth_ico@2x.png");
     }
   }
 
   .mfa-google-auth {
     /* -- Factor Icons (large): Google Authenticator -- */
-    background-image: url('../img/icons/mfa/googleAuth_70x70.png');
+    background-image: url("../img/icons/mfa/googleAuth_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Google Authenticator  -- */
-      background-image: url('../img/icons/mfa/googleAuth@2x.png');
+      background-image: url("../img/icons/mfa/googleAuth@2x.png");
     }
   }
 
   .mfa-hotp {
     /* -- Factor Icons (large): Hotp Factor -- */
-    background-image: url('../img/icons/mfa/hotpFactor_70x70.png');
+    background-image: url("../img/icons/mfa/hotpFactor_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Hotp Factor  -- */
-      background-image: url('../img/icons/mfa/hotpFactor@2x.png');
+      background-image: url("../img/icons/mfa/hotpFactor@2x.png");
     }
   }
 
   .mfa-hotp-30 {
     /* -- Factor Icons (small): Hotp Factor -- */
-    background-image: url('../img/icons/mfa/hotpFactor_38x38.png');
+    background-image: url("../img/icons/mfa/hotpFactor_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Hotp Factor  -- */
-      background-image: url('../img/icons/mfa/hotpFactor_ico@2x.png');
+      background-image: url("../img/icons/mfa/hotpFactor_ico@2x.png");
     }
   }
 
   .mfa-symantec-30,
   .enroll-factor-row .mfa-symantec {
     /* -- Factor Icons (small): Symantec VIP -- */
-    background-image: url('../img/icons/mfa/symantec_38x38.png');
+    background-image: url("../img/icons/mfa/symantec_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Symantec VIP -- */
-      background-image: url('../img/icons/mfa/symantec_ico@2x.png');
+      background-image: url("../img/icons/mfa/symantec_ico@2x.png");
     }
   }
 
   .mfa-symantec {
     /* -- Factor Icons (large): Symantec VIP -- */
-    background-image: url('../img/icons/mfa/symantec_70x70.png');
+    background-image: url("../img/icons/mfa/symantec_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Symantec VIP -- */
-      background-image: url('../img/icons/mfa/symantec@2x.png');
+      background-image: url("../img/icons/mfa/symantec@2x.png");
     }
   }
 
   .mfa-rsa-30,
   .enroll-factor-row .mfa-rsa {
     /* -- Factor Icons (small): RSA SecurID -- */
-    background-image: url('../img/icons/mfa/rsa_38x38.png');
+    background-image: url("../img/icons/mfa/rsa_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): RSA SecurID -- */
-      background-image: url('../img/icons/mfa/rsa_ico@2x.png');
+      background-image: url("../img/icons/mfa/rsa_ico@2x.png");
     }
   }
 
   .mfa-rsa {
     /* -- Factor Icons (large): RSA SecurID -- */
-    background-image: url('../img/icons/mfa/rsa_70x70.png');
+    background-image: url("../img/icons/mfa/rsa_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): RSA SecurID -- */
-      background-image: url('../img/icons/mfa/rsa@2x.png');
+      background-image: url("../img/icons/mfa/rsa@2x.png");
     }
   }
 
   .mfa-onprem-30,
   .enroll-factor-row .mfa-onprem {
     /* -- Factor Icons (small): OnPrem -- */
-    background-image: url('../img/icons/mfa/onprem_38x38.png');
+    background-image: url("../img/icons/mfa/onprem_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): OnPrem -- */
-      background-image: url('../img/icons/mfa/onprem_ico@2x.png');
+      background-image: url("../img/icons/mfa/onprem_ico@2x.png");
     }
   }
 
   .mfa-onprem {
     /* -- Factor Icons (large): OnPrem -- */
-    background-image: url('../img/icons/mfa/onprem_70x70.png');
+    background-image: url("../img/icons/mfa/onprem_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): OnPrem -- */
-      background-image: url('../img/icons/mfa/onprem@2x.png');
+      background-image: url("../img/icons/mfa/onprem@2x.png");
     }
   }
 
   .mfa-duo-30,
   .enroll-factor-row .mfa-duo {
     /* -- Factor Icons (small): DUO -- */
-    background-image: url('../img/icons/mfa/duo_38x38.png');
+    background-image: url("../img/icons/mfa/duo_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): DUO -- */
-      background-image: url('../img/icons/mfa/duo_ico@2x.png');
+      background-image: url("../img/icons/mfa/duo_ico@2x.png");
     }
   }
 
   .mfa-duo {
     /* -- Factor Icons (large): DUO -- */
-    background-image: url('../img/icons/mfa/duo_70x70.png');
+    background-image: url("../img/icons/mfa/duo_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): DUO -- */
-      background-image: url('../img/icons/mfa/duo@2x.png');
+      background-image: url("../img/icons/mfa/duo@2x.png");
     }
   }
 
   .mfa-yubikey-30,
   .enroll-factor-row .mfa-yubikey {
     /* -- Factor Icons (small): Yubikey -- */
-    background-image: url('../img/icons/mfa/yubico_38x38.png');
+    background-image: url("../img/icons/mfa/yubico_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Yubikey -- */
-      background-image: url('../img/icons/mfa/yubico_ico@2x.png');
+      background-image: url("../img/icons/mfa/yubico_ico@2x.png");
     }
   }
 
   .mfa-yubikey {
     /* -- Factor Icons (large): Yubikey -- */
-    background-image: url('../img/icons/mfa/yubico_70x70.png');
+    background-image: url("../img/icons/mfa/yubico_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Yubikey -- */
-      background-image: url('../img/icons/mfa/yubico@2x.png');
+      background-image: url("../img/icons/mfa/yubico@2x.png");
     }
   }
 
   .mfa-sms-30,
   .enroll-factor-row .mfa-okta-sms {
     /* -- Factor Icons (small): SMS -- */
-    background-image: url('../img/icons/mfa/sms_38x38.png');
+    background-image: url("../img/icons/mfa/sms_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): SMS -- */
-      background-image: url('../img/icons/mfa/sms_ico@2x.png');
+      background-image: url("../img/icons/mfa/sms_ico@2x.png");
     }
   }
 
   .mfa-okta-sms {
     /* -- Factor Icons (large): SMS -- */
-    background-image: url('../img/icons/mfa/sms_70x70.png');
+    background-image: url("../img/icons/mfa/sms_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): SMS -- */
-      background-image: url('../img/icons/mfa/sms@2x.png');
+      background-image: url("../img/icons/mfa/sms@2x.png");
     }
   }
 
   .mfa-call-30,
   .enroll-factor-row .mfa-okta-call {
     /* -- Factor Icons (small): CALL -- */
-    background-image: url('../img/icons/mfa/voicecall_38x38.png');
+    background-image: url("../img/icons/mfa/voicecall_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): CALL -- */
-      background-image: url('../img/icons/mfa/voicecall_ico@2x.png');
+      background-image: url("../img/icons/mfa/voicecall_ico@2x.png");
     }
   }
 
   .mfa-okta-call {
     /* -- Factor Icons (large): CALL -- */
-    background-image: url('../img/icons/mfa/voicecall_70x70.png');
+    background-image: url("../img/icons/mfa/voicecall_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): CALL -- */
-      background-image: url('../img/icons/mfa/voicecall@2x.png');
+      background-image: url("../img/icons/mfa/voicecall@2x.png");
     }
   }
 
   .mfa-okta-phone {
     /* -- Factor Icons (large): PHONE -- */
-    background-image: url('../img/icons/mfa/phone_70x70.png');
+    background-image: url("../img/icons/mfa/phone_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): PHONE -- */
-      background-image: url('../img/icons/mfa/phone@2x.png');
+      background-image: url("../img/icons/mfa/phone@2x.png");
     }
   }
 
   .mfa-email-30,
   .enroll-factor-row .mfa-okta-email {
     /* -- Factor Icons (small): EMAIL -- */
-    background-image: url('../img/icons/mfa/email_38x38.png');
+    background-image: url("../img/icons/mfa/email_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): EMAIL -- */
-      background-image: url('../img/icons/mfa/email_ico@2x.png');
+      background-image: url("../img/icons/mfa/email_ico@2x.png");
     }
   }
 
   .mfa-okta-email {
     /* -- Factor Icons (large): EMAIL -- */
-    background-image: url('../img/icons/mfa/email_70x70.png');
+    background-image: url("../img/icons/mfa/email_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): EMAIL -- */
-      background-image: url('../img/icons/mfa/email@2x.png');
+      background-image: url("../img/icons/mfa/email@2x.png");
     }
   }
 
   .mfa-question-30,
   .enroll-factor-row .mfa-okta-security-question {
     /* -- Factor Icons (small): Security Question -- */
-    background-image: url('../img/icons/mfa/question_38x38.png');
+    background-image: url("../img/icons/mfa/question_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Security Question -- */
-      background-image: url('../img/icons/mfa/question_ico@2x.png');
+      background-image: url("../img/icons/mfa/question_ico@2x.png");
     }
   }
 
   .mfa-okta-security-question {
     /* -- Factor Icons (large): Security Question -- */
-    background-image: url('../img/icons/mfa/question_70x70.png');
+    background-image: url("../img/icons/mfa/question_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Security Question -- */
-      background-image: url('../img/icons/mfa/question@2x.png');
+      background-image: url("../img/icons/mfa/question@2x.png");
     }
   }
 
   .mfa-password-30 {
     /* -- Factor Icons (small): Password -- */
-    background-image: url('../img/icons/mfa/password_38x38.png');
+    background-image: url("../img/icons/mfa/password_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Password -- */
-      background-image: url('../img/icons/mfa/password_ico@2x.png');
+      background-image: url("../img/icons/mfa/password_ico@2x.png");
     }
   }
 
   .mfa-windows-hello-30,
   .enroll-factor-row .mfa-windows-hello {
     /* -- Factor Icons (small): Windows Hello -- */
-    background-image: url('../img/icons/mfa/windowsHello_38x38.png');
+    background-image: url("../img/icons/mfa/windowsHello_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Windows Hello -- */
-      background-image: url('../img/icons/mfa/windowsHello_ico@2x.png');
+      background-image: url("../img/icons/mfa/windowsHello_ico@2x.png");
     }
   }
 
   .mfa-windows-hello {
     /* -- Factor Icons (large): Windows Hello -- */
-    background-image: url('../img/icons/mfa/windowsHello_70x70.png');
+    background-image: url("../img/icons/mfa/windowsHello_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Windows Hello -- */
-      background-image: url('../img/icons/mfa/windowsHello@2x.png');
+      background-image: url("../img/icons/mfa/windowsHello@2x.png");
     }
   }
 
   .mfa-u2f-30,
   .enroll-factor-row .mfa-u2f {
     /* -- Factor Icons (small): U2F -- */
-    background-image: url('../img/icons/mfa/u2f_38x38.png');
+    background-image: url("../img/icons/mfa/u2f_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): U2F -- */
-      background-image: url('../img/icons/mfa/u2f_ico@2x.png');
+      background-image: url("../img/icons/mfa/u2f_ico@2x.png");
     }
   }
 
   .mfa-u2f {
     /* -- Factor Icons (large): U2F -- */
-    background-image: url('../img/icons/mfa/u2f_70x70.png');
+    background-image: url("../img/icons/mfa/u2f_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): U2F -- */
-      background-image: url('../img/icons/mfa/u2f@2x.png');
+      background-image: url("../img/icons/mfa/u2f@2x.png");
     }
   }
 
   .mfa-okta-password {
     /* -- Factor Icons (large): Password -- */
-    background-image: url('../img/icons/mfa/password_70x70.png');
+    background-image: url("../img/icons/mfa/password_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Password -- */
-      background-image: url('../img/icons/mfa/password@2x.png');
+      background-image: url("../img/icons/mfa/password@2x.png");
     }
   }
 
   .mfa-custom-factor-30,
   .enroll-factor-row .mfa-custom-factor {
     /* -- Factor Icons (small): Custom Factor -- */
-    background-image: url('../img/icons/mfa/customFactor_38x38.png');
+    background-image: url("../img/icons/mfa/customFactor_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Custom Factor -- */
-      background-image: url('../img/icons/mfa/customFactor_ico@2x.png');
+      background-image: url("../img/icons/mfa/customFactor_ico@2x.png");
     }
   }
 
   .mfa-custom-factor {
     /* -- Factor Icons (large): Custom Factor -- */
-    background-image: url('../img/icons/mfa/customFactor_70x70.png');
+    background-image: url("../img/icons/mfa/customFactor_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Custom Factor -- */
-      background-image: url('../img/icons/mfa/customFactor@2x.png');
+      background-image: url("../img/icons/mfa/customFactor@2x.png");
     }
   }
 
   .mfa-webauthn-30,
   .enroll-factor-row .mfa-webauthn {
     /* -- Factor Icons (small): Webauthn -- */
-    background-image: url('../img/icons/mfa/webauthn_38x38.png');
+    background-image: url("../img/icons/mfa/webauthn_38x38.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Webauthn -- */
-      background-image: url('../img/icons/mfa/webauthn_ico@2x.png');
+      background-image: url("../img/icons/mfa/webauthn_ico@2x.png");
     }
   }
 
   .mfa-webauthn {
     /* -- Factor Icons (large): Webauthn -- */
-    background-image: url('../img/icons/mfa/webauthn_70x70.png');
+    background-image: url("../img/icons/mfa/webauthn_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): Webauthn -- */
-      background-image: url('../img/icons/mfa/webauthn@2x.png');
+      background-image: url("../img/icons/mfa/webauthn@2x.png");
     }
   }
 
   .smartcard {
     /* -- Factor Icons (large): PIV -- */
-    background-image: url('../img/icons/login/smartcard_70x70.png');
+    background-image: url("../img/icons/login/smartcard_70x70.png");
 
-    @media
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
       /* -- Factor Icons (high DPI): PIV -- */
-      background-image: url('../img/icons/login/smartcard@2x.png');
+      background-image: url("../img/icons/login/smartcard@2x.png");
     }
   }
 
@@ -753,9 +703,14 @@
 
   .icon-button {
     /* -- Buttons' Colors -- */
-    @include button-template($icon-button-bg-color, 0%, $dark-text-color, 23%, 26%);
+    @include button-template(
+      $icon-button-bg-color,
+      0%,
+      $dark-text-color,
+      23%,
+      26%
+    );
   }
-
 
   .okta-dropdown-list {
     /* -- Dropdown Colors -- */
@@ -790,7 +745,6 @@
     }
   }
 
-
   .okta-infobox-error {
     /* -- Error Infobox Colors -- */
     /* background-color: #fff; */
@@ -811,7 +765,6 @@
       /* height: 16px; */
       /* background-image: none; */
     }
-
   }
 
   .enroll-required-factor-list {
@@ -821,7 +774,6 @@
         color: $light-text-color;
       }
     }
-
   }
 
   .okta-form-input-field {
@@ -876,7 +828,6 @@
           font-family: $fonts;
         }
       }
-
     }
 
     placeholder {
@@ -915,7 +866,6 @@
     }
   }
 
-
   .chzn-single {
     /* -- Input Fields: Select Input -- */
     background-color: $input-bg-color;
@@ -941,7 +891,6 @@
     }
 
     .chzn-results {
-
       li {
         /* -- Input Fields: Select Input -- */
         /* border-color: #fff; */
@@ -954,46 +903,114 @@
     }
   }
 
-  .primary-auth { /* -- Page specific top level selectors -- */ }
-  .password-expired { /* -- Page specific top level selectors -- */ }
-  .password-reset { /* -- Page specific top level selectors -- */ }
-  .password-reset-email-sent { /* -- Page specific top level selectors -- */ }
-  .forgot-password { /* -- Page specific top level selectors -- */ }
-  .account-unlock { /* -- Page specific top level selectors -- */ }
-  .account-unlock-email-sent { /* -- Page specific top level selectors -- */ }
-  .recovery-challenge { /* -- Page specific top level selectors -- */ }
-  .recovery-loading { /* -- Page specific top level selectors -- */ }
-  .recovery-question { /* -- Page specific top level selectors -- */ }
-  .refresh-auth-state { /* -- Page specific top level selectors -- */ }
+  .primary-auth {
+    /* -- Page specific top level selectors -- */
+  }
+  .password-expired {
+    /* -- Page specific top level selectors -- */
+  }
+  .password-reset {
+    /* -- Page specific top level selectors -- */
+  }
+  .password-reset-email-sent {
+    /* -- Page specific top level selectors -- */
+  }
+  .forgot-password {
+    /* -- Page specific top level selectors -- */
+  }
+  .account-unlock {
+    /* -- Page specific top level selectors -- */
+  }
+  .account-unlock-email-sent {
+    /* -- Page specific top level selectors -- */
+  }
+  .recovery-challenge {
+    /* -- Page specific top level selectors -- */
+  }
+  .recovery-loading {
+    /* -- Page specific top level selectors -- */
+  }
+  .recovery-question {
+    /* -- Page specific top level selectors -- */
+  }
+  .refresh-auth-state {
+    /* -- Page specific top level selectors -- */
+  }
 
-  .enroll-choices { /* -- Page specific top level selectors -- */ }
-  .enroll-totp { /* -- Page specific top level selectors -- */ }
-  .barcode-totp { /* -- Page specific top level selectors -- */ }
-  .activate-totp { /* -- Page specific top level selectors -- */ }
-  .enroll-manual-totp { /* -- Page specific top level selectors -- */ }
-  .barcode-push { /* -- Page specific top level selectors -- */ }
-  .activate-push { /* -- Page specific top level selectors -- */ }
-  .enroll-manual-push { /* -- Page specific top level selectors -- */ }
-  .enroll-activation-link-sent { /* -- Page specific top level selectors -- */ }
-  .enroll-symantec { /* -- Page specific top level selectors -- */ }
-  .enroll-rsa { /* -- Page specific top level selectors -- */ }
-  .enroll-onprem { /* -- Page specific top level selectors -- */ }
-  .enroll-duo { /* -- Page specific top level selectors -- */ }
-  .enroll-sms { /* -- Page specific top level selectors -- */ }
-  .enroll-call { /* -- Page specific top level selectors -- */ }
-  .enroll-question { /* -- Page specific top level selectors -- */ }
+  .enroll-choices {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-totp {
+    /* -- Page specific top level selectors -- */
+  }
+  .barcode-totp {
+    /* -- Page specific top level selectors -- */
+  }
+  .activate-totp {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-manual-totp {
+    /* -- Page specific top level selectors -- */
+  }
+  .barcode-push {
+    /* -- Page specific top level selectors -- */
+  }
+  .activate-push {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-manual-push {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-activation-link-sent {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-symantec {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-rsa {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-onprem {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-duo {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-sms {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-call {
+    /* -- Page specific top level selectors -- */
+  }
+  .enroll-question {
+    /* -- Page specific top level selectors -- */
+  }
 
-  .mfa-verify-duo { /* -- Page specific top level selectors -- */ }
-  .mfa-verify { /* -- Page specific top level selectors: all challenge pages except duo -- */ }
-  .mfa-verify-totp { /* -- Page specific top level selectors -- */ }
-  .mfa-verify-push { /* -- Page specific top level selectors -- */ }
-  .mfa-verify-totp-inline { /* -- Page specific top level selectors -- */ }
-  .mfa-verify-question { /* -- Page specific top level selectors -- */ }
-  .mfa-verify-passcode { /* -- Page specific top level selectors -- */ }
-  .mfa-verify-password { /* -- Page specific top level selectors -- */ }
-
+  .mfa-verify-duo {
+    /* -- Page specific top level selectors -- */
+  }
+  .mfa-verify {
+    /* -- Page specific top level selectors: all challenge pages except duo -- */
+  }
+  .mfa-verify-totp {
+    /* -- Page specific top level selectors -- */
+  }
+  .mfa-verify-push {
+    /* -- Page specific top level selectors -- */
+  }
+  .mfa-verify-totp-inline {
+    /* -- Page specific top level selectors -- */
+  }
+  .mfa-verify-question {
+    /* -- Page specific top level selectors -- */
+  }
+  .mfa-verify-passcode {
+    /* -- Page specific top level selectors -- */
+  }
+  .mfa-verify-password {
+    /* -- Page specific top level selectors -- */
+  }
 }
-
 
 .okta-tooltip.qtip-custom {
   /* -- Tooltips -- */
@@ -1036,7 +1053,6 @@
 
   /* Using the same selector as line 59 to override styles at small screen sizes. */
   #okta-sign-in.auth-container {
-
     width: auto;
     margin-right: 0;
     margin-left: 0;
@@ -1050,6 +1066,5 @@
       max-width: $container-width - 84px;
       margin: 0 auto;
     }
-
   }
 }
