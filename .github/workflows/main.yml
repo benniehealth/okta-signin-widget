@@ -22,5 +22,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn
-      - run: yarn build
+      - run: yarn build:release
       - run: npm publish
