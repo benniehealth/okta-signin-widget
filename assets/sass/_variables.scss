@@ -1,7 +1,7 @@
 // Page Properties
 $fonts: "proxima nova", "ApercuPro", Arial, Helvetica, sans-serif;
 $default-border-radius: 3px;
-$container-width: 400px;
+$container-width: 614px;
 $container-min-width: 300px;
 $num-tabs: 5;
 
@@ -14,19 +14,19 @@ $font-size-default: 15px;
 
 // Font Weight
 $font-weight-body: normal;
-$font-weight-labels: 600;
-$font-weight-header: 600;
+$font-weight-labels: 400;
+$font-weight-header: 400;
 
 // Theme Color
 $primary-bg-color: #fff;
 $secondary-bg-color: #f9f9f9;
 
 // Text Color
-$header-text-color: #5e5e5e;
-$dark-text-color: #5e5e5e;
+$header-text-color: #282e4b;
+$dark-text-color: #282e4b;
 $medium-text-color: #777;
 $light-text-color: #a7a7a7;
-$link-text-color: #0074b3;
+$link-text-color: #276df6;
 $placeholder-text-color: #aaa;
 $error-text-color: #e34843;
 
@@ -34,7 +34,7 @@ $error-text-color: #e34843;
 $icon-button-bg-color: #fff;
 $button-bg-color: #fbfbfb;
 $dark-button-bg-color: #929292;
-$primary-button-bg-color: #007dc1;
+$primary-button-bg-color: #276df6;
 $success-button-bg-color: #4cbf9c;
 $negative-button-bg-color: #c35151;
 $disabled-button-text-color: #aaa;
@@ -75,7 +75,7 @@ $piv-action-button-border-text-color: #124a94;
 
 // Button Size
 $input-height: 40px;
-$button-height: 50px;
+$button-height: 40px;
 $button-line-height: $input-height - 4px;
 $button-padding: 0 15px;
 
