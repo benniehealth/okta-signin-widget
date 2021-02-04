@@ -1,19 +1,26 @@
 .auth-header {
-  padding: 30px 90px 75px;
+  padding: 30px 42px 75px;
   position: relative;
-  border-bottom: 1px solid #ddd;
   z-index: 10;
 
   -moz-transition: padding-bottom 0.4s;
   -webkit-transition: padding-bottom 0.4s;
   transition: padding-bottom 0.4s;
+  @include device-mq(x-small) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  @include max-width-mq($container-width - 50px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 /* Org Logo */
 
 .auth-org-logo {
   display: block;
-  margin: 0 auto;
   max-width: 200px;
   max-height: 40px;
 }

@@ -11,13 +11,15 @@
   overflow: auto;
 
   // Auth-container styles
-  border-radius: 3px;
-  border-style: solid;
-  border-width: 1px;
+
   height: auto;
-  margin: 100px auto 8px;
+  margin: 10vh auto 8px;
   width: $container-width;
   min-width: $container-min-width;
+
+  &:focus {
+    outline: none;
+  }
 
   @include device-mq(x-small) {
     margin-top: 0;
@@ -26,10 +28,6 @@
 
   @include max-width-mq($container-width) {
     width: 100%;
-  }
-
-  @include max-height-mq(750px) {
-    margin-top: 0;
   }
 }
 

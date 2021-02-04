@@ -14,7 +14,7 @@
 
 @mixin dark-button-template($bg-color) {
   @include button-template($bg-color, 3%, #fff, 15%, 17%);
-  @include button-shadow(0.15);
+  // @include button-shadow(0.15);
   &:hover,
   &:focus,
   &:active,
@@ -26,7 +26,7 @@
 
 @mixin button-shadow($drop-shadow-opacity) {
   box-shadow: rgba(#000, $drop-shadow-opacity) 0 1px 0,
-    rgba(255, 255, 255, 0.1) 0 1px 0 0 inset;
+    rgba(82, 54, 54, 0.1) 0 1px 0 0 inset;
 }
 
 @mixin button-template(
@@ -38,19 +38,6 @@
 ) {
   color: $text-color;
   background-color: $bg-color;
-  background: -o-linear-gradient(
-    top,
-    $bg-color 0%,
-    darken($bg-color, $gradient-factor) 100%
-  ); /* Opera 11.10+ */
-  background: -ms-linear-gradient(
-    top,
-    $bg-color 0%,
-    darken($bg-color, $gradient-factor) 100%
-  ); /* IE10+ */
-  background: linear-gradient($bg-color, darken($bg-color, $gradient-factor));
-  border-color: darken($bg-color, $border-factor);
-  border-bottom-color: darken($bg-color, $border-bottom-factor);
 
   &:hover,
   &:focus,
@@ -73,8 +60,6 @@
       $hover-bg-color,
       darken($hover-bg-color, $gradient-factor)
     );
-    border-color: darken($bg-color, $border-factor * 1.3);
-    border-bottom-color: darken($bg-color, $border-bottom-factor * 1.2);
     text-decoration: none;
     cursor: pointer;
   }
@@ -121,7 +106,7 @@
   h2,
   h3 {
     /* -- Fonts and Text Colors -- */
-    font-weight: $font-weight-header;
+    font-weight: bold;
     color: $header-text-color;
   }
 
@@ -158,7 +143,7 @@
     &:hover,
     &:active {
       /* -- Fonts and Text Colors: links -- */
-      color: $medium-text-color;
+      color: #276df6;
     }
   }
 
@@ -181,16 +166,14 @@
     font-family: $fonts;
 
     &:focus {
-      box-shadow: 0 0 8px $input-shadow-color-focus;
-      border-color: $input-border-color-focus;
+      // box-shadow: 0 0 8px $input-shadow-color-focus;
+      // border-color: $input-border-color-focus;
     }
   }
 
   &.main-container {
     /* -- Main Background and Border Colors -- */
     background-color: $primary-bg-color;
-    border-color: #ddd #ddd #d8d8d8;
-    box-shadow: 0 2px 0 rgba(175, 175, 175, 0.12);
 
     @include mobile {
       border-width: 0;
@@ -237,11 +220,6 @@
     .margin-top-30 {
       margin-top: 30px;
     }
-  }
-
-  .okta-sign-in-header {
-    /* -- Main Background and Border Colors -- */
-    border-bottom-color: $header-divider-color;
   }
 
   .okta-sign-in-beacon-border {
@@ -647,11 +625,11 @@
 
   .button {
     /* -- Buttons' Colors -- */
-    @include light-button-template($button-bg-color);
+    // @include light-button-template($button-bg-color);
 
-    &:focus {
-      border-color: $input-border-color-focus;
-    }
+    // &:focus {
+    //   border-color: $input-border-color-focus;
+    // }
   }
 
   .button-dark {
@@ -780,6 +758,8 @@
     /* -- Input Fields -- */
     background-color: $input-bg-color;
     border-color: $input-border-color;
+    height: 58px;
+    border-radius: 4px;
 
     &:hover {
       /* -- Input Fields -- */
@@ -787,13 +767,14 @@
     }
 
     &.focused-input {
-      border-color: $input-border-color-focus;
+      // border-color: $input-border-color-focus;
     }
 
     input {
       /* -- Input Fields -- */
       font-family: $fonts;
       color: $dark-text-color;
+      padding: 8px 12px;
 
       &::-webkit-input-placeholder {
         /* -- Input Fields: placeholder -- */

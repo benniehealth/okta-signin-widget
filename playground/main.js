@@ -1,9 +1,9 @@
 /* global OktaSignIn */
 /* eslint no-console: 0 */
 
-import signinWidgetOptions from '../.widgetrc.js';
+import signinWidgetOptions from "../.widgetrc.js";
 
-if (typeof OktaSignIn === 'undefined') {
+if (typeof OktaSignIn === "undefined") {
   // Make sure OktaSignIn is available
   setTimeout(() => window.location.reload(), 2 * 1000);
 }
@@ -17,18 +17,18 @@ const renderPlaygroundWidget = (options = {}) => {
   signIn = new OktaSignIn(Object.assign(signinWidgetOptions, options));
 
   signIn.renderEl(
-    { el: '#okta-login-container' },
+    { el: "#okta-login-container" },
 
-    function success (res) {
+    function success(res) {
       // Password recovery flow
-      if (res.status === 'FORGOT_PASSWORD_EMAIL_SENT') {
-        alert('SUCCESS: Forgot password email sent');
+      if (res.status === "FORGOT_PASSWORD_EMAIL_SENT") {
+        alert("SUCCESS: Forgot password email sent");
         return;
       }
 
       // Unlock account flow
-      if (res.status === 'UNLOCK_ACCOUNT_EMAIL_SENT') {
-        alert('SUCCESS: Unlock account email sent');
+      if (res.status === "UNLOCK_ACCOUNT_EMAIL_SENT") {
+        alert("SUCCESS: Unlock account email sent");
         return;
       }
 
@@ -38,7 +38,9 @@ const renderPlaygroundWidget = (options = {}) => {
       //    that needs to be exchanged for an okta session
       if (res.session) {
         console.log(res.user);
-        res.session.setCookieAndRedirect(signinWidgetOptions.baseUrl + '/app/UserHome');
+        res.session.setCookieAndRedirect(
+          signinWidgetOptions.baseUrl + "/app/UserHome"
+        );
         return;
       }
 
@@ -47,44 +49,41 @@ const renderPlaygroundWidget = (options = {}) => {
       //    initial configuration.
       else if (Array.isArray(res)) {
         console.log(res);
-        alert('SUCCESS: OIDC with multiple responseTypes. Check console.');
-      }
-      else {
+        alert("SUCCESS: OIDC with multiple responseTypes. Check console.");
+      } else {
         console.log(res);
-        alert('SUCCESS: OIDC with single responseType. Check Console');
+        alert("SUCCESS: OIDC with single responseType. Check Console");
       }
     },
 
-    function error (err) {
-      console.error('global error handler: ', err);
+    function error(err) {
+      console.error("global error handler: ", err);
     }
   );
 
-  signIn.on('ready', () => {
+  signIn.on("ready", () => {
     // handle `ready` event.
     // use `console.log` in particular so that those logs can be retrived
     // in testcafe for assertion
-    console.log('===== playground widget ready event received =====');
+    console.log("===== playground widget ready event received =====");
   });
 
-  signIn.on('afterRender', (context) => {
+  signIn.on("afterRender", (context) => {
     // handle `afterRender` event.
     // use `console.log` in particular so that those logs can be retrived
     // in testcafe for assertion
-    console.log('===== playground widget afterRender event received =====');
+    console.log("===== playground widget afterRender event received =====");
     console.log(JSON.stringify(context));
   });
 
-  signIn.on('afterError', (context, error) => {
+  signIn.on("afterError", (context, error) => {
     // handle `afterError` event.
     // use `console.log` in particular so that those logs can be retrived
     // in testcafe for assertion
-    console.log('===== playground widget afterError event received =====');
+    console.log("===== playground widget afterError event received =====");
     console.log(JSON.stringify(context));
     console.log(JSON.stringify(error));
   });
-
-
 };
 
 window.renderPlaygroundWidget = renderPlaygroundWidget;
